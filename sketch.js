@@ -89,12 +89,15 @@ function mouseDragged(){
 
 function mouseReleased(){
     slingshot.fly();
-    gameState = "launched";
+   // gameState = "launched";
 }
 
 function keyPressed(){
     if(keyCode === 32){
-       // slingshot.attach(bird.body);
+        Matter.Body.setPosition(bird.body , {x: 220 , y: 50});
+        bird.trajectory = [] ; 
+        bird.body.speed = 0;
+        slingshot.attach(bird.body);
     }
 }
 
@@ -115,3 +118,15 @@ async function getBackgroundImg(){
     backgroundImg = loadImage(bg);
     console.log(backgroundImg);
 }
+
+/*
+Most common errors:
+1. Typos
+2. Incorrect use of function
+3. Using variables outside their scope
+
+Techniques to find difficult bugs
+1. Commenting sections of codde
+2. Printing values of variables in the console
+3. Print messages in the code
+*/
